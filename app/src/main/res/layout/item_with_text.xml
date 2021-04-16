@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/settings_text_view1"
+        android:id="@+id/settings_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/settings_text_view1a"
+        android:id="@+id/settings_sub_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"

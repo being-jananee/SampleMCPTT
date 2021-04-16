@@ -1,10 +1,12 @@
-package com.example.samplemcptt;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.bluebirdcorp.mcptt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bluebirdcorp.mcptt.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ShowList(View view){
-        Intent intent = new Intent(this,ViewMore.class);
+        Intent intent = new Intent(this, ViewMoreActivity.class);
         startActivity(intent);
-
     }
 }

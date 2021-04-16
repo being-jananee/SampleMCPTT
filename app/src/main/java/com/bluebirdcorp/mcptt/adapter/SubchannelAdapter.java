@@ -1,4 +1,4 @@
-package com.example.samplemcptt;
+package com.bluebirdcorp.mcptt.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bluebirdcorp.mcptt.R;
 
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class SubchannelAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.displayradiobutton,parent,false);
-        return new SubchannelAdapter.TextTypeViewHolder(view);
+        return new TextTypeViewHolder(view);
     }
 
     @Override

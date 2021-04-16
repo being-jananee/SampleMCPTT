@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:foregroundTint="#FFFFFF"
-    tools:context=".ViewMore">
+    tools:context=".activity.ViewMoreActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
+        android:id="@+id/viewMoreRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view6"
+        android:id="@+id/seperatorLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="48dp"
@@ -25,10 +25,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView1" />
+        app:layout_constraintTop_toBottomOf="@+id/viewMoreRecyclerView" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/homeImageButton"
         android:layout_width="79dp"
         android:layout_height="57dp"
         android:layout_marginStart="32dp"
@@ -40,14 +40,14 @@
         android:tint="#FFFFFF"
         android:background="@drawable/imagebuttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/deviceButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.958"
         app:srcCompat="@drawable/ic_baseline_home_24" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/deviceButton"
         android:layout_width="79dp"
         android:layout_height="57dp"
         android:layout_marginStart="4dp"
@@ -58,15 +58,15 @@
         android:tint="#FFFFFF"
         android:background="@drawable/imagebuttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/clockButton"
+        app:layout_constraintStart_toEndOf="@+id/homeImageButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/ic_baseline_phone_iphone_24" />
 
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/clockButton"
         android:layout_width="79dp"
         android:layout_height="57dp"
         android:layout_marginStart="4dp"
@@ -77,14 +77,14 @@
         android:tint="#FFFFFF"
         android:background="@drawable/imagebuttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/ellipsesButton"
+        app:layout_constraintStart_toEndOf="@+id/deviceButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956"
         app:srcCompat="@drawable/ic_baseline_watch_later_24" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/ellipsesButton"
         android:layout_width="79dp"
         android:layout_height="57dp"
         android:layout_marginStart="4dp"
@@ -96,7 +96,7 @@
         android:background="@drawable/imagebuttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/clockButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956"
         app:srcCompat="@drawable/ic_baseline_more_horiz_24" />

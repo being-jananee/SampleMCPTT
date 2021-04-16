@@ -1,7 +1,6 @@
-package com.example.samplemcptt;
+package com.bluebirdcorp.mcptt.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluebirdcorp.mcptt.R;
+import com.bluebirdcorp.mcptt.entity.SetupNotificationsTemplate;
+
 import java.util.List;
 
 public class MultiViewTypeAdapter extends RecyclerView.Adapter {
-    private final String LOG_TAG = MultiViewTypeAdapter.class.getSimpleName();
-    private final List<SetupNotificationsTemplate> dataset;
+    private final List<SetupNotificationsTemplate> setupNotificationsTemplates;
     Context mContext;
-    int total_types;
-    private OnSetupListener mOnsetupListener;
+    int totalTypes;
+    private OnSetupListener onSetupListener;
     public interface OnSetupListener
     {
         void onSetupClick(int position);
@@ -27,15 +28,14 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
     public static class TextTypeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView field_name;
-        TextView field_val;
+        TextView fieldName;
+        TextView fieldvalue;
         OnSetupListener onSetupListener;
 
         public TextTypeViewHolder(View itemView,OnSetupListener onSetupListener)  {
             super(itemView);
-
-            this.field_name= (TextView) itemView.findViewById(R.id.settings_text_view1);
-            this.field_val = (TextView) itemView.findViewById(R.id.settings_text_view1a) ;
+            this.fieldName = (TextView) itemView.findViewById(R.id.settings_text_view);
+            this.fieldvalue = (TextView) itemView.findViewById(R.id.settings_sub_text_view) ;
             this.onSetupListener = onSetupListener;
             itemView.setOnClickListener(this);//wat exactly is this here
         }
@@ -48,24 +48,21 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
     public static class SwitchTypeViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtType;
-        Switch mySwitch;
-        Button bu;
+        TextView switchCaption;
+        Switch switchView;
 
         public SwitchTypeViewHolder(View itemView) {
             super(itemView);
-
-            this.txtType = (TextView) itemView.findViewById(R.id.settings_text_view2);
-            this.mySwitch = (Switch) itemView.findViewById(R.id.switch1);
-           // this.bu = (Button)itemView.findViewById(R.id.switch1);
+            this.switchCaption = (TextView) itemView.findViewById(R.id.switchText);
+            this.switchView = (Switch) itemView.findViewById(R.id.notificationToggle);
         }
     }
+
     public MultiViewTypeAdapter(List<SetupNotificationsTemplate> data, Context context,OnSetupListener onSetupListener) {
-        this.dataset = data;
+        this.setupNotificationsTemplates = data;
         this.mContext = context;
-        total_types = data.size();
-        this.mOnsetupListener=onSetupListener;
-        Log.d(LOG_TAG, "MultiViewTypeAdapter: "+total_types);
+        this.totalTypes = data.size();
+        this.onSetupListener =onSetupListener;
     }
 
     @NonNull
@@ -75,11 +72,9 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
         View view;
         switch (viewType) {
             case SetupNotificationsTemplate.TEXT_TYPE:
-                Log.d(LOG_TAG, "onCreateViewHolder:CASE ONE ");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_with_text, parent, false);
-                return new TextTypeViewHolder(view,mOnsetupListener);
+                return new TextTypeViewHolder(view, onSetupListener);
             case SetupNotificationsTemplate.SWITCH_TYPE:
-                Log.d(LOG_TAG, "onCreateViewHolder: CASE TWO");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_with_switch, parent, false);
                 return new SwitchTypeViewHolder(view);
                 }
@@ -88,34 +83,26 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        SetupNotificationsTemplate obj = dataset.get(position);
+        SetupNotificationsTemplate obj = setupNotificationsTemplates.get(position);
         View itemView = null;
         if(obj != null){
-            switch(obj.type){
+            switch(obj.componentType){
                 case 0:
-                    ((TextTypeViewHolder) holder).field_name.setText(obj.fieldName);
-                    ((TextTypeViewHolder) holder).field_val.setText(obj.fieldValue);
+                    ((TextTypeViewHolder) holder).fieldName.setText(obj.fieldName);
+                    ((TextTypeViewHolder) holder).fieldvalue.setText(obj.fieldValue);
                     break;
                 case 1:
-                    ((SwitchTypeViewHolder)holder).txtType.setText(obj.fieldName);
-                    //((SwitchTypeViewHolder)holder).mySwitch =  (Switch) itemView.findViewById(R.id.switch1);
-                    ((SwitchTypeViewHolder)holder).mySwitch.setId(R.id.switch1);
-//                    ((SwitchTypeViewHolder)holder).bu.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-////                            Toast t = Toast.makeText(this,"some text",Toast.LENGTH_LONG);
-//                            Log.d(LOG_TAG, "onbind: HERE");
-//                        }
-//                    });
+                    ((SwitchTypeViewHolder)holder).switchCaption.setText(obj.fieldName);
+                    ((SwitchTypeViewHolder)holder).switchView.setId(R.id.notificationToggle);
                     break;
-
             }
         }
     }
+
     @Override
     public int getItemViewType(int position) {
-        SetupNotificationsTemplate setupnotificationstemplate=dataset.get(position);
-        switch (setupnotificationstemplate.type) {
+        SetupNotificationsTemplate setupnotificationstemplate= setupNotificationsTemplates.get(position);
+        switch (setupnotificationstemplate.componentType) {
             case 0:
                 return SetupNotificationsTemplate.TEXT_TYPE;
             case 1:
@@ -127,6 +114,6 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return this.dataset.size();
+        return this.setupNotificationsTemplates.size();
     }
 }

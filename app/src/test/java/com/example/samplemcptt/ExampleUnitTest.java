@@ -1,4 +1,4 @@
-package com.example.samplemcptt;
+package com.bluebirdcorp.mcptt;
 
 import org.junit.Test;
 

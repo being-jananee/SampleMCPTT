@@ -1,17 +1,22 @@
-package com.example.samplemcptt;
+package com.bluebirdcorp.mcptt.activity;
+
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.widget.TextView;
+import com.bluebirdcorp.mcptt.R;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public class TextViewerActivity extends AppCompatActivity {
+
+    private final String TAG = TextViewerActivity.class.getSimpleName();
+
     TextView textView;
 
     @Override
@@ -19,10 +24,10 @@ public class TextViewerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_viewer);
 
-        ActionBar ab = getSupportActionBar();
-         ColorDrawable colorDrawable
-                = new ColorDrawable(getResources().getColor(R.color.mycolour));
-        ab.setBackgroundDrawable(colorDrawable);
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.bb_grey));
+        actionBar.setBackgroundDrawable(colorDrawable);
         textView=findViewById(R.id.article_subheading);
         String filename=getIntent().getStringExtra("MESSAGE");
         setTitle(filename);
@@ -31,21 +36,18 @@ public class TextViewerActivity extends AppCompatActivity {
     }
 
     public String loadData(String inFile) {
-        String tContents = "";
-
+        String content = "";
         try {
             InputStream stream = getAssets().open(inFile);
-
             int size = stream.available();
             byte[] buffer = new byte[size];
             stream.read(buffer);
             stream.close();
-            tContents = new String(buffer);
+            content = new String(buffer);
         } catch (IOException e) {
-            // Handle exceptions here
+            Log.e(TAG, "loadData: "+e.getLocalizedMessage() );
         }
-
-        return tContents;
+        return content;
 
     }
 

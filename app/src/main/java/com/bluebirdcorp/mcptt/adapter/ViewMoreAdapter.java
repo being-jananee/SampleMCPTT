@@ -1,7 +1,6 @@
-package com.example.samplemcptt;
+package com.bluebirdcorp.mcptt.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bluebirdcorp.mcptt.R;
+import com.bluebirdcorp.mcptt.entity.ViewMoreTemplate;
 
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class ViewMoreAdapter extends RecyclerView.Adapter {
         public TextTypeViewHolder(View itemView,OnViewListener onViewListener) {
             super(itemView);
 
-            this.field_name= (TextView) itemView.findViewById(R.id.textView1);
-            this.image = (ImageView) itemView.findViewById(R.id.imageView1) ;
+            this.field_name= (TextView) itemView.findViewById(R.id.arrowText);
+            this.image = (ImageView) itemView.findViewById(R.id.showArrow) ;
             this.onViewListener = onViewListener;
             itemView.setOnClickListener(this);
         }
@@ -55,8 +56,8 @@ public class ViewMoreAdapter extends RecyclerView.Adapter {
         public SeekerTypeViewHolder(View itemView) {
             super(itemView);
 
-            this.txtType = (TextView) itemView.findViewById(R.id.textView3);
-            this.seekBar = (SeekBar) itemView.findViewById(R.id.seekBar2);
+            this.txtType = (TextView) itemView.findViewById(R.id.sliderControllerText);
+            this.seekBar = (SeekBar) itemView.findViewById(R.id.sliderControl);
 
         }
     }
@@ -67,8 +68,8 @@ public class ViewMoreAdapter extends RecyclerView.Adapter {
 
         public VersionTypeViewHolder(View itemView, OnViewListener onViewListener)  {
             super(itemView);
-            this.name= (TextView) itemView.findViewById(R.id.settings_text_view1);
-            this.field_val = (TextView) itemView.findViewById(R.id.settings_text_view1a);
+            this.name= (TextView) itemView.findViewById(R.id.settings_text_view);
+            this.field_val = (TextView) itemView.findViewById(R.id.settings_sub_text_view);
         }
 
     }
@@ -89,14 +90,14 @@ public class ViewMoreAdapter extends RecyclerView.Adapter {
             case ViewMoreTemplate.TEXT_ROW:
                 Log.d(LOG_TAG, "onCreateViewHolder:CASE ONE ");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_with_icon, parent, false);
-                return new ViewMoreAdapter.TextTypeViewHolder(view,mOnViewListener);
+                return new TextTypeViewHolder(view,mOnViewListener);
             case ViewMoreTemplate.SEEKBAR_ROW:
                 Log.d(LOG_TAG, "onCreateViewHolder: CASE TWO");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_with_seekbar, parent, false);
                 return new SeekerTypeViewHolder(view);
             case ViewMoreTemplate.VERSION_ROW:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_with_text, parent, false);
-                return new ViewMoreAdapter.VersionTypeViewHolder(view,mOnViewListener);
+                return new VersionTypeViewHolder(view,mOnViewListener);
         }
 
         return null;
@@ -108,12 +109,12 @@ public class ViewMoreAdapter extends RecyclerView.Adapter {
         if(obj != null){
             switch (obj.type){
                 case 0:
-                    ((ViewMoreAdapter.TextTypeViewHolder) holder).field_name.setText(obj.fieldName);
-                    ((ViewMoreAdapter.TextTypeViewHolder) holder).image.setId(R.id.imageView1);
+                    ((TextTypeViewHolder) holder).field_name.setText(obj.fieldName);
+                    ((TextTypeViewHolder) holder).image.setId(R.id.showArrow);
                     break;
                 case 1:
                     ((SeekerTypeViewHolder) holder).txtType.setText(obj.fieldName);
-                    ((SeekerTypeViewHolder) holder).seekBar.setId(R.id.seekBar2);
+                    ((SeekerTypeViewHolder) holder).seekBar.setId(R.id.sliderControl);
                     break;
                 case 2:
                     ((VersionTypeViewHolder) holder).name.setText(obj.fieldName);

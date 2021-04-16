@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.samplemcptt">
+    package="com.bluebirdcorp.mcptt">
 
     <application
         android:allowBackup="true"
@@ -10,74 +10,66 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SampleMCPTT">
-        <activity android:name=".ImageViewerActivity"></activity>
-        <activity android:name=".TextViewerActivity" />
+        <activity android:name=".activity.ImageViewerActivity"></activity>
+        <activity android:name=".activity.TextViewerActivity" />
 
         <provider
-            android:name=".VideoProvider"
-            android:authorities="com.example.samplemcptt"
+            android:name=".provider.VideoProvider"
+            android:authorities="com.bluebirdcorp.mcptt"
             android:enabled="true"
             android:exported="true"
             android:grantUriPermissions="true" />
 
-        <activity android:name=".CustomVideoActivity" />
+        <activity android:name=".activity.CustomVideoActivity" />
         <activity
-            android:name=".DisplayContentArchive"
-            android:parentActivityName=".ViewMore">
+            android:name=".activity.DisplayContentArchiveActivity"
+            android:parentActivityName=".activity.ViewMoreActivity">
         <meta-data
             android:name="android:support.PARENT_ACTIVITY"
             android:value=".ViewMore"/>
         </activity>
         <activity
-            android:name=".SubchannelSoundSettings"
+            android:name=".activity.SubChannelSoundSettingsActivity"
             tools:ignore="Instantiatable"
-            android:parentActivityName=".Setupnotifications">
+            android:parentActivityName=".activity.SetupNotificationActivity">
         <meta-data
             android:name="android:support.PARENT_ACTIVITY"
             android:value=".ViewMore" />
         </activity>
-        <activity android:name=".ViewMore"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".activity.ViewMoreActivity"
+            android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".BeepView"
+            android:name=".activity.BeepViewActivity"
             tools:ignore="Instantiatable"
-            android:parentActivityName=".Setupnotifications">
+            android:parentActivityName=".activity.SetupNotificationActivity">
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".ViewMore" />
         </activity>
-        <activity android:name=".Setupnotifications"
-            android:parentActivityName=".ViewMore">
+        <activity android:name=".activity.SetupNotificationActivity"
+            android:parentActivityName=".activity.ViewMoreActivity">
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".ViewMore"/>
         </activity>
         <activity
-            android:name=".DisplayTerminalInfo"
-            android:parentActivityName=".ViewMore">
+            android:name=".activity.DisplayTerminalInfoActivity"
+            android:parentActivityName=".activity.ViewMoreActivity">
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".ViewMore" />
         </activity>
-        <activity
-            android:name=".DispMore"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android:support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayMoreActivity" />
     </application>
 
 </manifest>
