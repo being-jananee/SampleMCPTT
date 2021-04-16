@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.samplemcptt">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SampleMCPTT">
+        <activity android:name=".ImageViewerActivity"></activity>
+        <activity android:name=".TextViewerActivity" />
+
+        <provider
+            android:name=".VideoProvider"
+            android:authorities="com.example.samplemcptt"
+            android:enabled="true"
+            android:exported="true"
+            android:grantUriPermissions="true" />
+
+        <activity android:name=".CustomVideoActivity" />
+        <activity
+            android:name=".DisplayContentArchive"
+            android:parentActivityName=".ViewMore">
+        <meta-data
+            android:name="android:support.PARENT_ACTIVITY"
+            android:value=".ViewMore"/>
+        </activity>
+        <activity
+            android:name=".SubchannelSoundSettings"
+            tools:ignore="Instantiatable"
+            android:parentActivityName=".Setupnotifications">
+        <meta-data
+            android:name="android:support.PARENT_ACTIVITY"
+            android:value=".ViewMore" />
+        </activity>
+        <activity android:name=".ViewMore"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".BeepView"
+            tools:ignore="Instantiatable"
+            android:parentActivityName=".Setupnotifications">
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".ViewMore" />
+        </activity>
+        <activity android:name=".Setupnotifications"
+            android:parentActivityName=".ViewMore">
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".ViewMore"/>
+        </activity>
+        <activity
+            android:name=".DisplayTerminalInfo"
+            android:parentActivityName=".ViewMore">
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".ViewMore" />
+        </activity>
+        <activity
+            android:name=".DispMore"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DisplayMoreActivity" />
+    </application>
+
+</manifest>

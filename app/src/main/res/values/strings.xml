@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SampleMCPTT</string>
+    <string name="view_more">View More</string>
+    <string name="more">More</string>
+    <string name="archive">Archive</string>
+    <string name="radio_volume">Radio Volume</string>
+    <string name="view_dev_info">view dev info</string>
+    <string name="radio_start_beep">Radio Start Beep</string>
+    <string name="beep_1">Beep 1</string>
+</resources>
